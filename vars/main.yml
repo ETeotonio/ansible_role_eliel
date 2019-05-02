@@ -1,2 +1,5 @@
 ---
 # vars file for textkernel_eliel
+- hosts:  all
+  sudo: yes
+  

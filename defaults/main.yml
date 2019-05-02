@@ -1,2 +1,7 @@
 ---
-# defaults file for textkernel_eliel
+  # The following step will copy the httpd rpm file from the files folder to /tmp folder on remote server
+- name: Copy HTTPD RPM file to /tmp folder
+  copy:
+    src: httpd-2.4.6-89.el7.centos.x86_64.rpm
+    dest: /tmp/httpd-2.4.6-89.el7.centos.x86_64.rpm
+- name: 
