@@ -1,2 +1,22 @@
 ---
-# tasks file for textkernel_eliel
+  # The following step will copy the httpd rpm file from the files folder to /tmp folder on remote server
+  # the version of httpd file must be set on vars/main.yml file
+- name: Copy HTTPD RPM file to /tmp folder
+  copy:
+    src: httpd-{{ http_rpm_file_version }}.el7.centos.x86_64.rpm
+    dest: httpd-{{ http_rpm_file_version }}.el7.centos.x86_64.rpm
+
+  # install HTTPD RPM file using yum and root permissions
+- name: Install HTTPD RPM File
+  yum:
+    name: httpd-{{ http_rpm_file_version }}.el7.centos.x86_64.rpm
+    state: present
+    allow_downgrade: yes
+    become: yes
+
+  # set httpd to be started automatically and start the service
+- name: Start HTTPD service automatically
+  service: 
+    name: httpd
+    enabled: yes
+    state: started
