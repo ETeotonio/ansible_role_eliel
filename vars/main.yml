@@ -1,6 +1,5 @@
 ---
-- hosts:  all
-  sudo: yes
-  vars: 
-    http_rpm_file_version: 2.4.6-89
+hosts:  all
+sudo: yes
+http_rpm_file_version: 2.4.6-89
   

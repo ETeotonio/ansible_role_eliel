@@ -17,21 +17,31 @@ CentOS 7 or new
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+In order to make the settings easy, some Apache settings are located on file defaults/main.yml.
+The following settings can be set:
+httpd_listen_ip - the IP that will answer on the defined port
+httpd_listen - the port that will answer to HTTP requests
 
-Dependencies
-------------
+If httpd_listen_ip is set as '*', the playbook will ignore and maintain the default port (80)
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+If you changed the port, remember to access the server as follows:
+http://<your IP>:<port set>
+
+If you don't know your IP, just type ifconfig in your terminal.
+
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+In order to run, first you need to make sure that the httpd rpm file is located on the files folder. If you don't have the package, you can download from http://mirror.centos.org/centos/7/os/x86_64/Packages/ or directly from Apache Website (https://archive.apache.org/dist/httpd/).
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Assuming that the file is proper located on the folder, you can use the following playbook as an example:
+---
+- hosts: all
+  roles:
+   - {role: textkernel_eliel}
+
+Remember, in the first line, where is written hosts: all you can change to the name of your servers group.
 
 License
 -------
@@ -41,5 +51,5 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
-# ansible_role_eliel
+Eliel Teotonio de Oliveira
+eliel.teotonio@gmail.com
