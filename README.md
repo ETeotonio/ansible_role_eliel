@@ -14,6 +14,15 @@ Remote Server Requirements:
 --------------
 CentOS 7 or higher
 
+Role Installation
+--------------
+To install the Role, download de files from GitHub or clone the repository using the command:
+
+```git clone https://github.com/urashimaeliel/ansible_role_eliel.git```
+
+If you're using Linux, type the following commands to install the Role:
+
+```ansible-galaxy install -r requirements.yml```
 
 Role Variables
 --------------

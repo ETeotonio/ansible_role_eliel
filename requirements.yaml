@@ -1,0 +1,4 @@
+# Download the package directly from GitHub
+- src: https://github.com/urashimaeliel/ansible_role_eliel
+  version: master
+  name: ansible_role_eliel
