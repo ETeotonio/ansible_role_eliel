@@ -1,3 +1,6 @@
 ---
 sudo: yes
+set:
+  http_rpm_file_version: 2.4.6-89
+  when: "{{ http_rpm_file_version }} is not defined"
   
