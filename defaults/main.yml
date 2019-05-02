@@ -2,6 +2,17 @@
   # The following step will copy the httpd rpm file from the files folder to /tmp folder on remote server
 - name: Copy HTTPD RPM file to /tmp folder
   copy:
-    src: httpd-2.4.6-89.el7.centos.x86_64.rpm
-    dest: /tmp/httpd-2.4.6-89.el7.centos.x86_64.rpm
-- name: 
+    src: {{ http_rpm_file }}
+    dest: {{ http_rpm_file }}
+  # install HTTPD RPM file using yum and root permissions
+- name: Install HTTPD RPM File
+  yum:
+    name: {{ http_rpm_file }}
+    state: present
+    become: yes
+  # set httpd to be started automatically and start the service
+- name: Start HTTPD service automatically
+  service: 
+    name: httpd
+    enabled: yes
+    state: started

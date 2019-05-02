@@ -1,12 +1,18 @@
-Role Name
+Ansible Role Eliel
 =========
 
-A brief description of the role goes here.
+This role was built to automate the process installing HTTPD package on servers.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ansible > 2.0.0.2
+Python > 2.7
+
+Remote Server Requirements:
+--------------
+CentOS 7 or new
+
 
 Role Variables
 --------------
