@@ -38,10 +38,11 @@ Example Playbook
 In order to run, first you need to make sure that the httpd rpm file is located on the files folder. If you haven't downloaded yet, you can download the file from http://mirror.centos.org/centos/7/os/x86_64/Packages/ or directly from Apache Website (https://archive.apache.org/dist/httpd/).
 
 Once the file is proper located on the folder, you can use the following playbook as an example:
-`---
+```---
 - hosts: all
   roles:
-   - {role: textkernel_eliel}`
+   - {role: textkernel_eliel}
+   ```
 
 Remember, in the first line, where is written hosts: all you can change to the name of your servers group.
 
