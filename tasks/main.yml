@@ -1,24 +1,36 @@
 ---
 # The following step will copy the httpd rpm file from the files folder to /tmp folder on remote server
-# the version of httpd file must be set on here using the command, adding the quote right below the next name sentence:
-# vars:
-#    http_rpm_file_version: "<desired version>"
+# the version of httpd file must be set right below on vars area
+# if the variable is not set, the system will automatically set as the last version (2.4.6-89)
+# and also if the IP and Port
 
 - name: Copy HTTPD RPM file to /tmp folder
+  #set the httpd version here
+  vars:
+    http_rpm_file_version: 2.4.6-89
+    httpd_listen_ip: '*'
+    httpd_listen: 80
+    
   copy:
     src: textkernel_eliel/files/httpd-{{ http_rpm_file_version }}.el7.centos.x86_64.rpm
     dest: /tmp/httpd-{{ http_rpm_file_version }}.el7.centos.x86_64.rpm
 
   # install HTTPD RPM file using yum and root permissions
-- name: Install HTTPD RPM File
+- name: Install or Update HTTPD RPM File
   yum:
     name: /tmp/httpd-{{ http_rpm_file_version }}.el7.centos.x86_64.rpm
     state: present
     allow_downgrade: yes
 
-- name: Set the httpd properties defined on defaults/main.yml if the user specifies the listen ip
+# the following options can be set if the user doesn't want to use the default IP and port
+- name: Set the httpd ip and port properties defined on defaults/main.yml if the user specifies the listen ip
   command: sed -i "s/Listen 80/Listen {{ httpd_listen_ip }}:{{ httpd_listen }}/g" /etc/httpd/conf/httpd.conf
   when: '"{{ httpd_listen_ip }}" not in "*"'
+
+- name: Set the httpd port properties defined on defaults/main.yml if the user specifies the listen ip
+  command: sed -i "s/Listen 80/Listen {{ httpd_listen }}/g" /etc/httpd/conf/httpd.conf
+  when: '"{{ httpd_listen }}" not in "*"'
+
 
   # set httpd to be started automatically and start the service
 - name: Start HTTPD service automatically

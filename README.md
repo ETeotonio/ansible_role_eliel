@@ -18,13 +18,14 @@ CentOS 7 or higher
 Role Variables
 --------------
 
-In order to make the settings easy, some Apache settings are located on file defaults/main.yml.
+In order to make the settings easy, some Apache settings are located on file tasks/main.yml.
 The following settings can be set:
 - httpd_listen_ip - the IP that will answer on the defined port
 - httpd_listen - the port that will answer to HTTP requests
 - http_rpm_file_version - the httpd version that will be installed
 
-If httpd_listen_ip is set as '*', the playbook will not use this data and maintain the default port (80)
+If httpd_listen_ip is set as '*', the playbook will not use this data and maintain the default IP answering
+on the default port (80)
 
 If you changed the port, remember to access the server as follows:
 http://<your IP>:<port set>
